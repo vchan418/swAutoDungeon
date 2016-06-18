@@ -13,15 +13,14 @@ for i in list( reversed( range(3) ) ):
 	sleep(1)
 print "Start"
 
-# print "Click into bottom dungeon"
-# pyautogui.click(x=1503, y=865)
-# sleep(2)
+print "Click into bottom dungeon"
+pyautogui.click(x=1503, y=865)
+sleep(2)
 
 while (dungeonRuns != 0):
 	currentDungeonTime = dungeonTime
 	print "Start selected dungeon"
-	pyscreeze.locateCenterOnScreen('pictures/start_button.png')
-	# pyautogui.click(x=1599, y=709)
+	pyautogui.click(x=1599, y=709)
 	
 	print "Wait %d seconds for dungeon to finish..." % (dungeonTime)
 	while(currentDungeonTime > 0):
