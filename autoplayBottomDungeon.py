@@ -2,10 +2,11 @@ import pyautogui
 import pyscreeze
 from time import sleep
 
-# Variables used in script
+# Prompt user for variables used in script
 dungeonRuns = input('How many runs of the dungeon? ')
 totalRuns = dungeonRuns
-dungeonTime = 90
+dungeonTime = input('How long is the average run?')
+dungeonTime += 25
 
 print "Starting bot... Wait 3 seconds"
 for i in list( reversed( range(3) ) ):
@@ -39,10 +40,12 @@ while (dungeonRuns != 0):
 	print "Dungeon done, restarting..."
 	pyautogui.doubleClick(interval = 2)
 
-	pyscreeze.locateOnScreen('pictures/closeDialog.png')
-	sleep(2)
-	pyscreeze.locateOnScreen('pictures/replay.png')
-	sleep(2)
+	pyscreeze.locateCenterOnScreen('pictures/closeDialog.png')
+	pyautogui.click()
+	sleep(1)
+	pyscreeze.locateCenterOnScreen('pictures/replay.png')
+	pyautogui.click()
+	sleep(1)
 
 	dungeonRuns -= 1
 	if dungeonRuns > 1:
