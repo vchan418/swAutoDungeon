@@ -13,14 +13,21 @@ for i in list( reversed( range(3) ) ):
 	sleep(1)
 print "Start"
 
-print "Click into bottom dungeon"
-pyautogui.click(x=1503, y=865)
-sleep(2)
+"""
+Removing the initial click from dungeon selection screen
+in case desired dungeon cannot be at bottom of list
+"""
+# print "Click into bottom dungeon"
+# pyautogui.click(x=1503, y=865)
+# sleep(2)
 
 while (dungeonRuns != 0):
+
+	# Dungeon time re-initialized each loop
 	currentDungeonTime = dungeonTime
+
 	print "Start selected dungeon"
-	pyautogui.click(x=1599, y=709)
+	pyscreeze.locateCenterOnScreen('pictures/start_button.png')
 	
 	print "Wait %d seconds for dungeon to finish..." % (dungeonTime)
 	while(currentDungeonTime > 0):
@@ -31,10 +38,10 @@ while (dungeonRuns != 0):
 
 	print "Dungeon done, restarting..."
 	pyautogui.doubleClick(interval = 2)
+
+	pyscreeze.locateOnScreen('pictures/closeDialog.png')
 	sleep(2)
-	pyautogui.click(x=900, y=800)
-	sleep(2)
-	pyautogui.click(x=665, y=546)
+	pyscreeze.locateOnScreen('pictures/replay.png')
 	sleep(2)
 
 	dungeonRuns -= 1
@@ -46,8 +53,7 @@ while (dungeonRuns != 0):
 		print "No more runs..."
 
 print "Ran %s times." % (totalRuns)
-sleep(5)
-pyautogui.click(x=1805, y=1054)
-sleep(2)
-pyautogui.doubleClick(x=42, y=243)
-sleep(10000)
+
+# Output text to a log text file
+with open("autoPlayLog.txt", "w") as outputText:
+	outputText.write("The dungeon was run %d times" % (totalRuns))
